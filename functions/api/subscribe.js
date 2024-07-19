@@ -11,13 +11,20 @@ export async function onRequestPost(context) {
     }
 
     try {
-        // Store the email in Cloudflare KV (you need to set up a KV namespace)
+        // Check if the email already exists
+        const existingSubscriber = await env.MAIL_LIST.get(email);
+        
+        if (existingSubscriber) {
+            return new Response('Email already subscribed', { status: 409 });
+        }
+
+        // If email doesn't exist, store it in Cloudflare KV
         await env.MAIL_LIST.put(email, JSON.stringify({ subscribed: new Date() }));
 
         // Optionally, send a confirmation email here
 
         return new Response('Subscribed successfully', { status: 200 });
     } catch (error) {
-        return new Response('Error subscribing', { status: 500 });
+        return new Response('Error processing subscription', { status: 500 });
     }
 }
