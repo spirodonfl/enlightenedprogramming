@@ -40,7 +40,7 @@
 
                         if (response.ok) {
                             alert('Subscribed successfully!');
-                            document.getElementById('signup-form').innerHTML = 'Thank you for subscribing! I will do my best to make it worth your while.';
+                            document.getElementById('signup_form').innerHTML = 'Thank you for subscribing! I will do my best to make it worth your while.';
                         } else if (response.status === 409) {
                             alert('This email is already subscribed.');
                         } else {
