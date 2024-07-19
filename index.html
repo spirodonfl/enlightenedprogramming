@@ -16,6 +16,40 @@
             <a href="https://twitter.com/spirodonfl" target="_blank">X</a>
             <a href="https://www.linkedin.com/in/spiro-floropoulos/" target="_blank">LinkedIn</a>
         </div>
+        <div style="background-color: #eee; border: 1px solid #ddd;">
+            <h2>Get Notified Of...</h2>
+            <ul>
+                <li>New articles</li>
+                <li>New videos</li>
+                <li>New studies I've found or put together</li>
+            </ul>
+            <p>It is time consuming to create these articles. It is even *more* time consuming to go over scientific and academic studies to gather the information I have so far. In the future, I may have to charge a nominal fee to see some of the bigger content. However, what I'd like to do is give people who join the notification list exclusive, free or discounted access. I also want to setup a special newsletter where I present summaries of the data I have, weekly. Please consider joining the mailing list.</p>
+            <form id="signup_form" style="display: grid; grid-template-columns: max-content 1fr max-content;">
+                <div>Email:</div><input type="email" name="email" style="width: 100%;" required /><button type="submit">Join!</button>
+            </form>
+            <script>
+                document.getElementById('signup-form').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('email').value;
+
+                    try {
+                        const response = await fetch('/api/subscribe', {
+                            method: 'POST',
+                            body: new FormData(e.target)
+                        });
+
+                        if (response.ok) {
+                            alert('Subscribed successfully!');
+                        } else {
+                            alert('Error subscribing. Please try again.');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('An error occurred. Please try again.');
+                    }
+                });
+            </script>
+        </div>
         <h2>Preface</h2>
         <p>This is somewhat of a joke but the principles are real. I am a software engineer and I have been working in the field for over 10 years. I have seen the good, the bad, and the ugly of programming. I have seen the beauty of well-crafted code and the horror of spaghetti code. I have seen the power of logic and the chaos of bugs. Through it all, I have come to appreciate the art and science of programming, and the profound impact it has on our world.</p>
         <p>I am also a streamer and I have been streaming on Twitch for a while now. I have built a community of coders who share my passion for programming and technology. Together, we explore new languages, work on projects, and learn from each other. It is a place of collaboration, creativity, and camaraderie.</p>
