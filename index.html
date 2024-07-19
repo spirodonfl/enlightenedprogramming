@@ -43,6 +43,7 @@
                             document.getElementById('signup_form').innerHTML = 'Thank you for subscribing! I will do my best to make it worth your while.';
                         } else if (response.status === 409) {
                             alert('This email is already subscribed.');
+                            document.getElementById('signup_form').innerHTML = 'It looks like you are already subscribed! Thank you!';
                         } else {
                             alert('Error subscribing. Please try again.');
                         }
