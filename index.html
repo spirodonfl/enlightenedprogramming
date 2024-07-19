@@ -40,9 +40,9 @@
 
                         if (response.ok) {
                             alert('Subscribed successfully!');
+                            document.getElementById('signup_form').innerHTML = 'Thank you for signing up! I will do my best to make it worth your while.';
                         } else {
                             alert('Error subscribing. Please try again.');
-                            document.getElementById('signup_form').innerHTML = 'Thank you for signing up! I will do my best to make it worth your while.';
                         }
                     } catch (error) {
                         console.error('Error:', error);
