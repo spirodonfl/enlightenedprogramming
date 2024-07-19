@@ -12,7 +12,7 @@ export async function onRequestPost(context) {
 
     try {
         // Store the email in Cloudflare KV (you need to set up a KV namespace)
-        await env.enlightenedprogramming.put(email, JSON.stringify({ subscribed: new Date() }));
+        await env.MAIL_LIST.put(email, JSON.stringify({ subscribed: new Date() }));
 
         // Optionally, send a confirmation email here
 
